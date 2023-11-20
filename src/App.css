@@ -1,0 +1,61 @@
+.App {
+  padding: 1.5em;
+}
+
+@font-face {
+  font-family: 'FunkySignature';
+  src: local('Funky Signature'), url('./fonts/Funky Signature.ttf'), format('ttf');
+}
+
+@font-face {
+  font-family: 'MonkeyFunky';
+  src: local('Monkey Funky'), url('./fonts/Monkey Funky.ttf'), format('ttf');
+}
+
+@font-face {
+  font-family: 'MuchFunky';
+  src: local('MuchFunky'), url('./fonts/MuchFunky.ttf'), format('ttf');
+}
+
+@font-face {
+  font-family: 'Ghost';
+  src: local('iknowaghost.ttf'), url('./fonts/iknowaghost.ttf'), format('ttf');
+}
+
+.--routes {
+  margin: 3em; 
+}
+
+body {
+  font-family: var(--font-primary);
+  letter-spacing: -0.09em;
+  word-spacing: 0.04em;
+  font-size: 1.9em;
+  color: var(--colour-primary);
+  line-height: 0.79em;
+}
+
+body a {
+  color: var(--colour-primary);
+}
+
+a:hover {
+  color: var(--colour-secondary);
+}
+
+:root {
+  --colour-background: #164863;
+  --colour-primary: #427D9D;
+  --colour-secondary: #9BBEC8;
+  --colour-highlight: #DDF2FD;
+  --font-primary: 'Ghost';
+  --font-titles: 'MuchFunky';
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.pointer {
+  cursor: pointer;
+}

@@ -1,0 +1,113 @@
+.genre-table {
+    width: 100%;
+    border-style: none;
+    font-size: 0.8em; 
+    line-height: 0.8em; 
+}
+
+.bold {
+    font-weight: bold;
+}
+
+th,
+td {
+    padding: 0.4em ;
+    text-align: left;
+    box-shadow: 0.1em 0.2em 0.3em rgba(0, 0, 0, 0.18);
+    
+}
+
+td:nth-child(1){
+    width: 15%;
+}
+
+td:nth-child(2){
+    width: 5%;
+}
+
+td:nth-child(3){
+    width: 5%;
+    text-align: center;
+}
+
+td:nth-child(4){
+    width: 30%;
+}
+
+td:nth-child(5){
+    width: 22%; 
+}
+
+td:nth-child(6){
+    width: fit-content; 
+}
+
+.collapse-button {
+    background: none;
+    border: none;
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+.child-genres {
+    background-color: #f9f9f9;
+}
+
+.genre-button {
+    display: flex; 
+    align-items: center;
+}
+
+.genre-name-button {
+    background-color: transparent;
+    border: none; 
+    font-family: var(--font-titles); 
+    font-size: 1.5em; 
+    letter-spacing: 0.08em;
+    display: flex; 
+    align-items: center;
+    text-align: left;
+}
+
+.arrow-icon {
+    font-size: 1em; 
+}
+
+.popular-artists-list {
+    list-style:circle; 
+    display: flex; 
+    flex-direction: column; 
+    flex-wrap: wrap; 
+    margin: 0em; 
+    word-spacing: -0.1em ;
+    padding: 0em 0.8em ; 
+    letter-spacing: -0.1em;
+}
+
+.music-player {
+    height: 82px; 
+    width: 100%; 
+    border: none; 
+}
+
+.countries-list {
+    list-style: none; 
+    margin: 0em; 
+    padding: 1em; 
+}
+
+@media (max-width: 1280px) {
+    .hidden-1280 {
+        display: none; 
+    }
+}
+
+@media (max-width: 1024px) {
+    .hidden-1024 {
+        display: none; 
+    }
+
+    .genre-description {
+        letter-spacing: -0.18em;
+    }
+}
