@@ -12,13 +12,13 @@ const GenreTable = ({ genres }) => {
                     <th className="hidden-1024">Country</th>
                     <th>Decade</th>
                     <th>Description</th>
-                    <th className="hidden-1024">Popular</th>
+                    {/* <th className="hidden-1024">Popular</th> */}
                     <th className="hidden-1280">Example</th>
                 </tr>
             </thead>
             <tbody>
-                {genres.map((genre, index) => (
-                    <GenreRow key={genre.name} genre={genre} depth={0} baseHue={index * 130} />
+                {genres?.map((genre, index) => (
+                    <GenreRow key={genre.id} genre={genre} depth={0} baseHue={index * 130} />
                 ))}
             </tbody>
         </table>
@@ -59,7 +59,7 @@ const GenreRow = ({ genre, depth, baseHue, hide }) => {
                             )}
                         </div>
                         <button
-                            style={{ color: getRowColor(), fontSize: `${1.7-depth*0.3}em`}}
+                            style={{ color: getRowColor(), fontSize: `${1.7 - depth * 0.3}em` }}
                             onClick={toggleCollapse}
                             className={`genre-name-button bold ${genre.children.length > 0 ? 'pointer' : ''}`}
                         >
@@ -69,35 +69,37 @@ const GenreRow = ({ genre, depth, baseHue, hide }) => {
                 </td>
                 <td className="hidden-1024" >
                     <ul className="countries-list">
-                        {genre.countries.map((c, index) => 
-                            (<li key={index}>
-                                <CountryFlag countryCode={c} svg />
-                            </li>))}
+                        {genre.countryCodes?.map((c, index) =>
+                        (<li key={index}>
+                            <CountryFlag countryCode={c} svg />
+                        </li>))}
                     </ul>
                 </td>
                 <td style={{ borderColor: getRowColor() }}>{genre.decade}</td>
                 <td style={{ borderColor: getRowColor() }} className="genre-description">{genre.description}</td>
-                <td style={{ borderColor: getRowColor() }} className="hidden-1024">
+                {/* <td style={{ borderColor: getRowColor() }} className="hidden-1024">
                     <ul className="popular-artists-list">
-                        {genre.popular.map((p, index) => 
+                        {genre.popular.map((p, index) =>
                             (<li key={index}>{p}</li>))}
                     </ul>
-                </td>
+                </td> */}
                 <td className="hidden-1280">
                     <div className='music-player'>
-                        <MusicPlayer spotifyTrackPreviewId={genre.spotifyTrackPreviewId} />
+                        {genre.spotifyTrackPreviewId &&
+                            <MusicPlayer spotifyTrackPreviewId={genre.spotifyTrackPreviewId} />
+                        }
                     </div>
                 </td>
             </tr>
             {genre.children.length > 0 && (
                 <>
-                    {genre.children.map((childGenre, childIndex) => (
+                    {genre.children?.map((childGenre, childIndex) => (
                         <GenreRow
                             key={childGenre.name}
                             genre={childGenre}
                             depth={depth + 1}
                             baseHue={baseHue}
-                            hide={hide || isCollapsed} 
+                            hide={hide || isCollapsed}
                         />
                     ))}
                 </>

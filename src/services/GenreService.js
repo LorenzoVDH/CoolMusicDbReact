@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export default class GenreService {
     mockedGenres = [
         {
@@ -14,7 +16,7 @@ export default class GenreService {
                     description: 'A radio format which developed from the album-oriented rock (AOR) format in the early 1980s.',
                     popular: ['The Rolling Stones', 'The Who', 'Pink Floyd'],
                     spotifyTrackPreviewId: '6H3kDe7CGoWYBabAeVWGiD',
-                    countries: ["US","GB"],
+                    countries: ["US", "GB"],
                     children: [
                         {
                             name: 'Prog Rock',
@@ -50,7 +52,7 @@ export default class GenreService {
                             description: 'A subgenre of punk rock known for its fast tempo, short songs, and abrasive sound.',
                             popular: ['Black Flag', 'Minor Threat', 'Bad Brains'],
                             spotifyTrackPreviewId: '0YnP5BtP6lTwQV8gLOzaov',
-                            countries: ["US","GB"],
+                            countries: ["US", "GB"],
                             children: [],
                         },
                         {
@@ -119,7 +121,7 @@ export default class GenreService {
             description: 'A genre of music that originated in African American communities in New York City.',
             popular: ['Run-D.M.C.', '2Pac', 'Jay-Z'],
             spotifyTrackPreviewId: '2oSPru8bef0EMhF9tvMSLn',
-            countries: ["US"], 
+            countries: ["US"],
             children: [
                 {
                     name: 'East Coast Hip Hop',
@@ -203,7 +205,7 @@ export default class GenreService {
             description: 'A broad term that refers to the tradition of music that spans over six centuries.',
             popular: ['Ludwig van Beethoven', 'Wolfgang Amadeus Mozart', 'Johann Sebastian Bach'],
             spotifyTrackPreviewId: '3kfR3pry54a3QhQ1yWVIYN',
-            countries: ["IT", "DE", "AT", "RU", "FR"], 
+            countries: ["IT", "DE", "AT", "RU", "FR"],
             children: [
                 {
                     name: 'Baroque',
@@ -237,7 +239,7 @@ export default class GenreService {
                             description: 'A movement that focused on atmosphere and evocation rather than traditional harmony and structure.',
                             popular: ['Claude Debussy', 'Maurice Ravel', 'Erik Satie'],
                             spotifyTrackPreviewId: '3YJrnXT1UNpRgnc7lcgXSF',
-                            countries: [], 
+                            countries: [],
                             children: [],
                         },
                     ],
@@ -246,9 +248,29 @@ export default class GenreService {
         },
 
     ];
+    baseUrl = "http://localhost:3000/Genres";
+    genres = [];
 
+    async getGenresAsync() {
+        //return Promise.resolve(this.mockedGenres);
 
-    getGenres() {
-        return this.mockedGenres;
+        try {
+            const response = await fetch(`${this.baseUrl}`);
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            console.log('Data', data);
+            console.log(this.mockedGenres);
+
+            this.genres = data;
+            return data;
+        } catch (error) {
+            console.error('Error fetching genres:', error);
+            throw error; // Rethrow the error to handle it in the calling code if needed
+        }
     }
+
 }
