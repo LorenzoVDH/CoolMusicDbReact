@@ -263,7 +263,6 @@ export default class GenreService {
 
             const data = await response.json();
             console.log('Data', data);
-            console.log(this.mockedGenres);
 
             this.genres = data;
             return data;
@@ -272,5 +271,4 @@ export default class GenreService {
             throw error; // Rethrow the error to handle it in the calling code if needed
         }
     }
-
 }

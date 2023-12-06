@@ -10,7 +10,9 @@ const Genres = () => {
     const genreService = new GenreService();
 
     genreService.getGenresAsync().then((genres) => {
-      setGenres(genres);
+      if (genres) {
+        setGenres(genres)
+      };
     });
   }, []);
 
