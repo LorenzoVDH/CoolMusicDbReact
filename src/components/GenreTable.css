@@ -1,8 +1,8 @@
 .genre-table {
     width: 100%;
     border-style: none;
-    font-size: 0.8em; 
-    line-height: 0.8em; 
+    font-size: 0.8em;
+    line-height: 0.8em;
 }
 
 .bold {
@@ -11,36 +11,45 @@
 
 th,
 td {
-    padding: 0.4em ;
-    text-align: left;
+    padding: 0.4em;
     box-shadow: 0.1em 0.2em 0.3em rgba(0, 0, 0, 0.18);
-    
 }
 
-td:nth-child(1){
-    width: 15%;
+th {
+    text-align: left;
 }
 
-td:nth-child(2){
-    width: 5%;
-}
-
-td:nth-child(3){
-    width: 5%;
+td {
     text-align: center;
 }
 
-td:nth-child(4){
+td:nth-child(1) {
+    width: 17%;
+}
+
+td:nth-child(2) {
+    width: 11%;
+    font-size: 1.4em;
+    padding: 0px;
+}
+
+td:nth-child(3) {
+    width: 8%;
+    text-align: center;
+}
+
+td:nth-child(4) {
     width: 30%;
 }
 
-td:nth-child(5){
-    width: 22%; 
+td:nth-child(5) {
+    width: 15%;
 }
 
-td:nth-child(6){
-    width: fit-content; 
+td:nth-child(6) {
+    width: fit-content;
 }
+
 
 .collapse-button {
     background: none;
@@ -54,57 +63,57 @@ td:nth-child(6){
 }
 
 .genre-button {
-    display: flex; 
+    display: flex;
     align-items: center;
 }
 
 .genre-name-button {
     background-color: transparent;
-    border: none; 
-    font-family: var(--font-titles); 
-    font-size: 1.5em; 
+    border: none;
+    font-family: var(--font-titles);
+    font-size: 1.5em;
     letter-spacing: 0.08em;
-    display: flex; 
+    display: flex;
     align-items: center;
     text-align: left;
 }
 
 .arrow-icon {
-    font-size: 1em; 
+    font-size: 1em;
 }
 
 .popular-artists-list {
-    list-style:circle; 
-    display: flex; 
-    flex-direction: column; 
-    flex-wrap: wrap; 
-    margin: 0em; 
-    word-spacing: -0.1em ;
-    padding: 0em 0.8em ; 
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 0em;
+    word-spacing: -0.1em;
+    padding: 0em 0.8em;
     letter-spacing: -0.1em;
 }
 
 .music-player {
-    height: 82px; 
-    width: 100%; 
-    border: none; 
+    height: 82px;
+    width: 100%;
+    border: none;
 }
 
 .countries-list {
-    list-style: none; 
-    margin: 0em; 
-    padding: 1em; 
+    list-style: none;
+    margin: 0em;
+    padding: 1em;
 }
 
 @media (max-width: 1280px) {
     .hidden-1280 {
-        display: none; 
+        display: none;
     }
 }
 
 @media (max-width: 1024px) {
     .hidden-1024 {
-        display: none; 
+        display: none;
     }
 
     .genre-description {

@@ -12,7 +12,7 @@ const GenreTable = ({ genres }) => {
                     <th className="hidden-1024">Country</th>
                     <th>Decade</th>
                     <th>Description</th>
-                    {/* <th className="hidden-1024">Popular</th> */}
+                    <th className="hidden-1024">Popular</th>
                     <th className="hidden-1280">Example</th>
                 </tr>
             </thead>
@@ -46,7 +46,7 @@ const GenreRow = ({ genre, depth, baseHue, hide }) => {
         return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
     };
 
-    return (
+    return !hide && (
         <>
             <tr style={{ color: getRowColor(), backgroundColor: getRowColorLighter() }} hidden={hide}>
                 <td style={{ borderColor: getRowColor() }}>
@@ -77,12 +77,12 @@ const GenreRow = ({ genre, depth, baseHue, hide }) => {
                 </td>
                 <td style={{ borderColor: getRowColor() }}>{genre.decade}</td>
                 <td style={{ borderColor: getRowColor() }} className="genre-description">{genre.description}</td>
-                {/* <td style={{ borderColor: getRowColor() }} className="hidden-1024">
+                <td style={{ borderColor: getRowColor() }} className="hidden-1024">
                     <ul className="popular-artists-list">
-                        {genre.popular.map((p, index) =>
-                            (<li key={index}>{p}</li>))}
+                        {genre.popularArtists.map((data, index) =>
+                            (<li key={index}>{data.artistName}</li>))}
                     </ul>
-                </td> */}
+                </td>
                 <td className="hidden-1280">
                     <div className='music-player'>
                         {genre.spotifyTrackPreviewId &&
