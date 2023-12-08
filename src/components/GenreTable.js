@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react';
 import './GenreTable.css';
 import MusicPlayer from './MusicPlayer';
 import CountryFlag from 'react-country-flag';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
-const GenreTable = ({ genres }) => {
+const GenreTable = ({ genres, onEditClick, onDeleteClick }) => {
+
     return (
         <table className="genre-table">
             <thead>
@@ -14,18 +17,25 @@ const GenreTable = ({ genres }) => {
                     <th>Description</th>
                     <th className="hidden-1024">Popular</th>
                     <th className="hidden-1280">Example</th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 {genres?.map((genre, index) => (
-                    <GenreRow key={genre.id} genre={genre} depth={0} baseHue={index * 130} />
+                    <GenreRow key={genre.id}
+                        genre={genre}
+                        depth={0}
+                        baseHue={index * 130}
+                        onEditClick={c => onEditClick(c)}
+                        onDeleteClick={c => onDeleteClick(c)} />
                 ))}
             </tbody>
         </table>
     );
 };
 
-const GenreRow = ({ genre, depth, baseHue, hide }) => {
+const GenreRow = ({ genre, depth, baseHue, hide, onEditClick, onDeleteClick }) => {
     const [isCollapsed, setIsCollapsed] = useState(true);
 
     const toggleCollapse = () => {
@@ -45,6 +55,14 @@ const GenreRow = ({ genre, depth, baseHue, hide }) => {
         const hue = baseHue + depth * 15;
         return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
     };
+
+    const editClickHandler = (genreId) => {
+        onEditClick(genreId);
+    }
+
+    const deleteClickHandler = (genreId) => {
+        onDeleteClick(genreId);
+    }
 
     return !hide && (
         <>
@@ -90,16 +108,28 @@ const GenreRow = ({ genre, depth, baseHue, hide }) => {
                         }
                     </div>
                 </td>
+                <td className="hidden-1280">
+                    <button className='icon-button' onClick={c => editClickHandler(genre.id)}>
+                        <EditIcon className='edit-icon' />
+                    </button>
+                </td>
+                <td className="hidden-1280">
+                    <button className='icon-button' onClick={c => deleteClickHandler(genre.id)}>
+                        <DeleteIcon className='delete-icon' />
+                    </button>
+                </td>
             </tr>
             {genre.children.length > 0 && (
                 <>
-                    {genre.children?.map((childGenre, childIndex) => (
+                    {genre.children?.map((childGenre,) => (
                         <GenreRow
                             key={childGenre.name}
                             genre={childGenre}
                             depth={depth + 1}
                             baseHue={baseHue}
                             hide={hide || isCollapsed}
+                            onEditClick={c => onEditClick(c)}
+                            onDeleteClick={c => onDeleteClick(c)}
                         />
                     ))}
                 </>
@@ -107,6 +137,5 @@ const GenreRow = ({ genre, depth, baseHue, hide }) => {
         </>
     );
 };
-
 
 export default GenreTable;

@@ -271,4 +271,18 @@ export default class GenreService {
             throw error; // Rethrow the error to handle it in the calling code if needed
         }
     }
+
+    async deleteGenre(genreId) {
+        try {
+            const response = await fetch(`${this.baseUrl}/${genreId}`, { method: 'DELETE' });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+
+            console.log('Genre was deleted succesfully');
+        } catch (error) {
+            console.error(`Error deleting genre ${genreId}: `, error);
+        }
+    }
 }
