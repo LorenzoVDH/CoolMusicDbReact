@@ -16,3 +16,15 @@
     align-items: center;
     min-height: 100vh;
 }
+
+.genre-action-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    width: 100%;
+}
+
+.add-button {
+    transform: scale(3);
+    margin: 1.3em 1.6em;
+}
