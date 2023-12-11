@@ -49,6 +49,7 @@ const Genres = () => {
           onEditClick={c => editClickHandler(c)}
           onDeleteClick={c => deleteClickHandler(c)} />
         <div className="genre-action-buttons">
+          <span>Add new</span>
           <AddCircleOutlineIcon className='add-button' />
         </div>
       </div>
