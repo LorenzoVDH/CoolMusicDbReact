@@ -20,13 +20,22 @@
 .genre-action-buttons {
     display: flex;
     flex-direction: row;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: center;
     width: 100%;
-    cursor: pointer;
 }
 
-.add-button {
-    transform: scale(3);
-    margin: 1.3em 1.6em;
+.add-genre-button {
+    font-family: inherit;
+    font-size: 1em;
+    letter-spacing: -0.1em;
+    margin: 1em;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: inherit;
+}
+
+.add-genre-button span {
+    margin-left: 0.7em;
 }

@@ -108,12 +108,12 @@ const GenreRow = ({ genre, depth, baseHue, hide, onEditClick, onDeleteClick }) =
                         }
                     </div>
                 </td>
-                <td className="hidden-1280">
+                <td>
                     <button className='icon-button' onClick={c => editClickHandler(genre.id)}>
                         <EditIcon className='edit-icon' />
                     </button>
                 </td>
-                <td className="hidden-1280">
+                <td>
                     <button className='icon-button' onClick={c => deleteClickHandler(genre.id)}>
                         <DeleteIcon className='delete-icon' />
                     </button>
