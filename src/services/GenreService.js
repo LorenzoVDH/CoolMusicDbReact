@@ -255,7 +255,7 @@ export default class GenreService {
         //return Promise.resolve(this.mockedGenres);
 
         try {
-            const response = await fetch(`${this.baseUrl}`);
+            const response = await fetch(`${this.baseUrl}`, { method: 'GET' });
 
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
@@ -268,7 +268,30 @@ export default class GenreService {
             return data;
         } catch (error) {
             console.error('Error fetching genres:', error);
-            throw error; // Rethrow the error to handle it in the calling code if needed
+            throw error;
+        }
+    }
+
+    async getGenreByIdAsync(genreId) {
+        const fetchlink = `${this.baseUrl}/${genreId}`;
+
+        console.log("fetclink", fetchlink);
+
+        try {
+            const response = await fetch(fetchlink, { method: 'GET' });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            console.log('Data', data);
+
+            this.genre = data;
+            return data;
+        } catch (error) {
+            console.error(`Error fetching genre:${genreId}`, error);
+            throw error;
         }
     }
 
@@ -283,6 +306,27 @@ export default class GenreService {
             console.log('Genre was deleted succesfully');
         } catch (error) {
             console.error(`Error deleting genre ${genreId}: `, error);
+        }
+    }
+
+    async createNewGenreAsync(genre) {
+        console.log("created genre is:", genre);
+        try {
+            const response = await fetch(`${this.baseUrl}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(genre),
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+
+            console.log('Genre was created successfully');
+        } catch (error) {
+            console.error(`Error creating genre: `, error);
         }
     }
 }
