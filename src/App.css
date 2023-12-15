@@ -1,5 +1,5 @@
 .App {
-  padding: 1.5em;
+  padding: 1em;
 }
 
 @font-face {
@@ -23,7 +23,7 @@
 }
 
 .--routes {
-  margin: 3em; 
+  margin: 1em;
 }
 
 body {

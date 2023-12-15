@@ -1,32 +1,32 @@
 nav {
-    padding: 0.5em; 
-    width: min(100%, 1280px); 
+    padding: 0.5em;
+    width: min(100%, 1280px);
     height: 100%;
-    display: flex; 
-    flex-direction: row; 
-    align-items: end; 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .--logo {
     background-color: var(--colour-secondary);
     border-radius: 0.8em;
     color: white;
-    display: flex; 
+    display: flex;
     align-items: center;
-    flex-direction: column; 
+    flex-direction: column;
     padding: 0.75em;
     max-width: fit-content;
     box-shadow: 0.2em 0.2em 0.95em rgba(0, 0, 0, 0.18);
 }
 
-.--logo > * {
+.--logo>* {
     margin: 0;
     line-height: 0.25em;
 }
 
 .--logo-icon {
     font-size: 2.5em;
-    margin-bottom: 0.35em; 
+    margin-bottom: 0.35em;
     margin-top: 0.1em;
 }
 
@@ -39,19 +39,19 @@ nav {
 .--navbarlinks {
     padding: 0em 0.75em;
     margin: 0;
-    display: flex; 
+    display: flex;
     justify-content: space-around;
-    width: min(100%, 70vw); 
+    width: min(100%, 70vw);
     height: 100%;
 }
 
 .--navbarlinks li {
-    font-family: var(--font-titles); 
-    list-style: none; 
-    font-weight: bold; 
-    font-size: 1.75em; 
-    letter-spacing: 0.05em; 
-    align-self: flex-end; 
+    font-family: var(--font-titles);
+    list-style: none;
+    font-weight: bold;
+    font-size: 1.75em;
+    letter-spacing: 0.05em;
+    align-self: flex-end;
 }
 
 .--navbarlinks a {
@@ -61,12 +61,12 @@ nav {
 
 @media (max-width: 1280px) {
     nav {
-        align-items: center; 
-        padding: 0.05em; 
+        align-items: center;
+        padding: 0.05em;
     }
 
     .--logo {
-        flex-direction: row; 
+        flex-direction: row;
         padding: 0.4em 0.75em;
     }
 
@@ -81,18 +81,22 @@ nav {
 
     .--navbarlinks li {
         font-size: 1.5em;
-        margin: 0.05em;  
+        margin: 0.05em;
     }
 }
 
 @media (max-width: 1024px) {
     nav {
-        flex-direction: column; 
-        align-items: center; 
+        flex-direction: column;
+        align-items: center;
     }
 
     .--navbarlinks {
         padding: 0;
+    }
+
+    .--logo {
+        margin-bottom: 0.5em;
     }
 }
 
