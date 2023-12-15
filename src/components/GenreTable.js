@@ -4,8 +4,9 @@ import MusicPlayer from './MusicPlayer';
 import CountryFlag from 'react-country-flag';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { FamilyRestroom } from '@mui/icons-material';
 
-const GenreTable = ({ genres, onEditClick, onDeleteClick }) => {
+const GenreTable = ({ genres, onEditClick, onDeleteClick, onParentChildEditClick }) => {
 
     return (
         <table className="genre-table">
@@ -19,6 +20,7 @@ const GenreTable = ({ genres, onEditClick, onDeleteClick }) => {
                     <th className="hidden-1280">Example</th>
                     <th></th>
                     <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -28,14 +30,15 @@ const GenreTable = ({ genres, onEditClick, onDeleteClick }) => {
                         depth={0}
                         baseHue={index * 130}
                         onEditClick={c => onEditClick(c)}
-                        onDeleteClick={c => onDeleteClick(c)} />
+                        onDeleteClick={c => onDeleteClick(c)}
+                        onParentChildEditClick={c => onParentChildEditClick(c)} />
                 ))}
             </tbody>
         </table>
     );
 };
 
-const GenreRow = ({ genre, depth, baseHue, hide, onEditClick, onDeleteClick }) => {
+const GenreRow = ({ genre, depth, baseHue, hide, onEditClick, onDeleteClick, onParentChildEditClick }) => {
     const [isCollapsed, setIsCollapsed] = useState(true);
 
     const toggleCollapse = () => {
@@ -64,6 +67,10 @@ const GenreRow = ({ genre, depth, baseHue, hide, onEditClick, onDeleteClick }) =
         onDeleteClick(genreId);
     }
 
+    const parentChildEditHandler = (genreId) => {
+        onParentChildEditClick(genreId);
+    }
+
     return !hide && (
         <>
             <tr style={{ color: getRowColor(), backgroundColor: getRowColorLighter() }} hidden={hide}>
@@ -77,7 +84,7 @@ const GenreRow = ({ genre, depth, baseHue, hide, onEditClick, onDeleteClick }) =
                             )}
                         </div>
                         <button
-                            style={{ color: getRowColor(), fontSize: `${1.7 - depth * 0.3}em` }}
+                            style={{ color: getRowColor(), fontSize: `${1.9 - depth * 0.1}em` }}
                             onClick={toggleCollapse}
                             className={`genre-name-button bold ${genre.children.length > 0 ? 'pointer' : ''}`}
                         >
@@ -114,6 +121,11 @@ const GenreRow = ({ genre, depth, baseHue, hide, onEditClick, onDeleteClick }) =
                     </button>
                 </td>
                 <td>
+                    <button className='icon-button' onClick={c => parentChildEditHandler(genre.id)}>
+                        <FamilyRestroom className='edit-icon' />
+                    </button>
+                </td>
+                <td>
                     <button className='icon-button' onClick={c => deleteClickHandler(genre.id)}>
                         <DeleteIcon className='delete-icon' />
                     </button>
@@ -130,6 +142,7 @@ const GenreRow = ({ genre, depth, baseHue, hide, onEditClick, onDeleteClick }) =
                             hide={hide || isCollapsed}
                             onEditClick={c => onEditClick(c)}
                             onDeleteClick={c => onDeleteClick(c)}
+                            onParentChildEditClick={c => onParentChildEditClick(c)}
                         />
                     ))}
                 </>
