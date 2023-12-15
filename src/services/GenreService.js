@@ -272,6 +272,26 @@ export default class GenreService {
         }
     }
 
+    async getGenresSimplifiedAsync() {
+        //return Promise.resolve(this.mockedGenres);
+
+        try {
+            const response = await fetch(`${this.baseUrl}/Simplified`, { method: 'GET' });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            console.log('Data', data);
+
+            this.genres = data;
+            return data;
+        } catch (error) {
+            console.error('Error fetching genres:', error);
+            throw error;
+        }
+    }
     async getGenreByIdAsync(genreId) {
         const fetchlink = `${this.baseUrl}/${genreId}`;
 
@@ -310,14 +330,13 @@ export default class GenreService {
     }
 
     async createNewGenreAsync(genre) {
-        console.log("created genre is:", genre);
         try {
             const response = await fetch(`${this.baseUrl}`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(genre),
+                body: JSON.stringify(genre)
             });
 
             if (!response.ok) {
@@ -327,6 +346,47 @@ export default class GenreService {
             console.log('Genre was created successfully');
         } catch (error) {
             console.error(`Error creating genre: `, error);
+        }
+    }
+
+    async updateGenreAsync(genre) {
+        try {
+            const response = await fetch(`${this.baseUrl}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(genre)
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+
+            console.log('Genre was updated succesfully');
+        } catch (error) {
+            console.error(`Error updating genre: `, error);
+        }
+    }
+
+    async updateGenreHierarchy(genreId, children) {
+        try {
+            const response = await fetch(`${this.baseUrl}/${genreId}/SubGenres`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(children)
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+
+            console.log('Genre hierarchy was updated succesfully');
+        }
+        catch (error) {
+            console.error(`Error updating genre hierarchy: `, error);
         }
     }
 }
