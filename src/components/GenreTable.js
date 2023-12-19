@@ -61,15 +61,15 @@ const GenreRow = ({ genre, depth, baseHue, hide, onEditClick, onDeleteClick, onP
 
     const editClickHandler = (genreId) => {
         onEditClick(genreId);
-    }
+    };
 
     const deleteClickHandler = (genreId) => {
         onDeleteClick(genreId);
-    }
+    };
 
     const parentChildEditHandler = (genreId) => {
         onParentChildEditClick(genreId);
-    }
+    };
 
     return !hide && (
         <>
@@ -86,7 +86,7 @@ const GenreRow = ({ genre, depth, baseHue, hide, onEditClick, onDeleteClick, onP
                         <button
                             style={{ color: getRowColor(), fontSize: `${1.9 - depth * 0.1}em` }}
                             onClick={toggleCollapse}
-                            className={`genre-name-button bold ${genre.children.length > 0 ? 'pointer' : ''}`}
+                            className={`genre-name bold ${genre.children.length > 0 ? 'pointer' : ''}`}
                         >
                             {genre.name}
                         </button>

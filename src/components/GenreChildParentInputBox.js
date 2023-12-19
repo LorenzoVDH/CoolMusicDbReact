@@ -1,16 +1,20 @@
+import './GenreChildParent.css';
+
 const GenreChildParentInputBox = ({ genreId, children, selectableGenres }) => {
     return (
-        <div>
+        <div className="genre-child-parent-input-wrapper">
             <label htmlFor="swal-input-children">Subgenres</label>
-            {selectableGenres.map((genre) => (
-                genre.id != genreId && <SubGenreSelectionBox
-                    key={genre.id}
-                    genreId={genre.id}
-                    genreName={genre.name}
-                    parentElementIdName="swal-input-children"
-                    checked={children.some((g) => g.id === genre.id)}
-                />
-            ))}
+            <ul className="select-box-list">
+                {selectableGenres.map((genre) => (
+                    genre.id != genreId && <SubGenreSelectionBox
+                        key={genre.id}
+                        genreId={genre.id}
+                        genreName={genre.name}
+                        parentElementIdName="swal-input-children"
+                        checked={children.some((g) => g.id === genre.id)}
+                    />
+                ))}
+            </ul>
         </div>
     );
 };
