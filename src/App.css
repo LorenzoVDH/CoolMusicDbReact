@@ -18,6 +18,11 @@
 }
 
 @font-face {
+  font-family: 'LaMachineCompany';
+  src: local('LaMachineCompany'), url('./fonts/La Machine Company.ttf'), format('ttf');
+}
+
+@font-face {
   font-family: 'Ghost';
   src: local('iknowaghost.ttf'), url('./fonts/iknowaghost.ttf'), format('ttf');
 }
@@ -50,6 +55,7 @@ a:hover {
   --colour-highlight: #DDF2FD;
   --font-primary: 'Ghost';
   --font-titles: 'MuchFunky';
+  --font-logo: 'LaMachineCompany';
 }
 
 .uppercase {
@@ -57,5 +63,17 @@ a:hover {
 }
 
 .pointer {
+  cursor: pointer;
+}
+
+.edit-icon,
+.delete-icon {
+  transform: scale(1.5);
+}
+
+.icon-button {
+  background-color: transparent;
+  border: none;
+  color: inherit;
   cursor: pointer;
 }

@@ -131,6 +131,7 @@ const GenreRow = ({ genre, depth, baseHue, hide, onEditClick, onDeleteClick, onP
                     </button>
                 </td>
             </tr>
+
             {genre.children.length > 0 && (
                 <>
                     {genre.children?.map((childGenre,) => (

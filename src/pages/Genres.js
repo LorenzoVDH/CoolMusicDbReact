@@ -171,7 +171,6 @@ const Genres = () => {
           onEditClick={c => editClickHandler(c)}
           onDeleteClick={c => deleteClickHandler(c)}
           onParentChildEditClick={c => parentChildEditClickHandler(c)} />
-
       </div>
       <button className='add-genre-button' onClick={c => newClickHandler(c)} >
         <AddCircleOutlineIcon />
