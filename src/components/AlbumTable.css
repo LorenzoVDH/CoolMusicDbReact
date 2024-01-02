@@ -1,0 +1,37 @@
+.album-artist-list {
+    list-style: none;
+}
+
+.album-table {
+    width: 100%;
+}
+
+.album-table td {
+    text-align: left;
+    padding: 0.1em 0.75em;
+    font-size: 1em;
+}
+
+.album-table tr {
+    margin: 300px;
+}
+
+.album-table td:nth-child(1) {
+    width: 18%;
+}
+
+.album-table td:nth-child(2) {
+    width: 10%;
+    text-align: center;
+}
+
+.album-table td:nth-child(3) {
+    width: min-content;
+    font-weight: bold;
+}
+
+.album-table td:nth-child(4),
+.album-table td:nth-child(5) {
+    width: 6%;
+    text-align: center;
+}

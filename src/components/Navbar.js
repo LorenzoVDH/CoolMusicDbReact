@@ -16,7 +16,7 @@ const Navbar = () => {
                     <li><Link to="/genres">Genres</Link></li>
                     <li><Link to="/bands">Bands</Link></li>
                     <li><Link to="/artists">Artists</Link></li>
-                    <li><Link to="/tracks">Tracks</Link></li>
+                    <li><Link to="/albums">Albums</Link></li>
                 </ul>
             </nav>
         </>
