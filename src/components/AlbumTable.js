@@ -4,7 +4,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import nameToColor from './NameToColor';
 
 const AlbumTable = ({ albums }) => {
-
     return (
         <table className="album-table">
             <thead>
