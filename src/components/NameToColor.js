@@ -1,4 +1,6 @@
 const nameToColor = (name) => {
+    const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+
     const hashCode = (str) => {
         let hash = 0;
         for (let i = 0; i < str.length; i++) {
@@ -8,10 +10,14 @@ const nameToColor = (name) => {
     };
 
     const intToLightRGB = (i) => {
-        const lightOffset = 100;
-        const r = ((i & 0xFF0000) >> 16) + lightOffset % 255;
-        const g = ((i & 0x00FF00) >> 8) + lightOffset % 255;
-        const b = (i & 0x0000FF) + lightOffset % 255;
+        const lightMin = 199;
+        const lightMax = 255;
+        const scaleFactor = (lightMax - lightMin) / 255;
+        const r = Math.floor(((i & 0xFF0000) >> 16) * scaleFactor) + lightMin;
+        const g = Math.floor(((i & 0x00FF00) >> 8) * scaleFactor) + lightMin;
+        const b = Math.floor((i & 0x0000FF) * scaleFactor) + lightMin;
+
+        console.log(r, g, b);
 
         return (
             (r > 255 ? 255 : r) * 0x10000 +

@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react';
 import './Albums.css';
 import AlbumService from '../services/AlbumService';
 import AlbumTable from '../components/AlbumTable';
+import ArrowBack from '@mui/icons-material/ArrowBack';
+import ArrowForward from '@mui/icons-material/ArrowForward';
+
 
 const Albums = () => {
     const [albums, setAlbums] = useState([]);
@@ -46,21 +49,26 @@ const Albums = () => {
     return albums && (
         <div className="albums-page-container">
             <h1 className="page-title">Albums</h1>
-            <div className="album-table-wrapper">
-                <AlbumTable albums={albums} />
-            </div>
             <div className="album-table-pagination">
-                <select onChange={handlePageSizeChange}>
-                    <option>--number of results--</option>
+                <select onChange={handlePageSizeChange} defaultValue={pageSize}>
                     <option value={5}>5</option>
                     <option value={10}>10</option>
                     <option value={15}>15</option>
                     <option value={20}>20</option>
                     <option value={25}>25</option>
                 </select>
-                <button onClick={gotoPrevPage}>Previous</button>
-                <span>{pageIndex}</span>
-                <button onClick={gotoNextPage}>Next</button>
+                <div>
+                    <button onClick={gotoPrevPage} disabled={pageIndex <= 0}>
+                        <ArrowBack />
+                    </button>
+                    <span>{pageIndex + 1}</span>
+                    <button onClick={gotoNextPage} disabled={pageIndex >= totalPages}>
+                        <ArrowForward />
+                    </button>
+                </div>
+            </div>
+            <div className="album-table-wrapper">
+                <AlbumTable albums={albums} />
             </div>
         </div>
     );

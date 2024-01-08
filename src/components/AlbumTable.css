@@ -10,7 +10,7 @@
     text-align: left;
     padding: 0.1em 0.75em;
     font-size: 0.75em;
-    line-height: 0.1em;
+    line-height: 1em;
 }
 
 .album-table tr {
@@ -18,17 +18,17 @@
 }
 
 .album-table td:nth-child(1) {
-    width: 18%;
+    width: min-content;
 }
 
 .album-table td:nth-child(2) {
-    width: 10%;
-    text-align: center;
+    width: min-content;
+    font-weight: bold;
 }
 
 .album-table td:nth-child(3) {
-    width: min-content;
-    font-weight: bold;
+    width: 10%;
+    text-align: center;
 }
 
 .album-table td:nth-child(4),

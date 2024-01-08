@@ -40,6 +40,13 @@ body {
   line-height: 0.79em;
 }
 
+select,
+label {
+  font-family: var(--font-primary);
+  color: var(--colour-primary);
+  font-size: 1.7em;
+}
+
 body a {
   color: var(--colour-primary);
 }

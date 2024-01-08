@@ -9,8 +9,8 @@ const AlbumTable = ({ albums }) => {
             <thead>
                 <tr>
                     <th>Artist(s)</th>
-                    <th>Releasedate</th>
                     <th>Album</th>
+                    <th>Releasedate</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -22,8 +22,8 @@ const AlbumTable = ({ albums }) => {
                     return (
                         <tr key={album.id} style={{ backgroundColor: nameToColor(artistName) }}>
                             <td><ul className="album-artist-list">{album.artists.map(({ id, artistName }) => <li key={id}>{artistName}</li>)}</ul></td>
-                            <td>{album.releaseDate}</td>
                             <td>{album.name}</td>
+                            <td>{album.releaseDate}</td>
                             <td>
                                 <button className="icon-button">
                                     <EditIcon className='edit-icon' />
