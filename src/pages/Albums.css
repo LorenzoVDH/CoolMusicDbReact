@@ -39,4 +39,10 @@
     border: none;
     background-color: transparent;
     color: inherit;
+    cursor: pointer;
+}
+
+.album-table-pagination button:disabled {
+    color: lightgray;
+    cursor: none;
 }

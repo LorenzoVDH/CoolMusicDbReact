@@ -17,8 +17,6 @@ const nameToColor = (name) => {
         const g = Math.floor(((i & 0x00FF00) >> 8) * scaleFactor) + lightMin;
         const b = Math.floor((i & 0x0000FF) * scaleFactor) + lightMin;
 
-        console.log(r, g, b);
-
         return (
             (r > 255 ? 255 : r) * 0x10000 +
             (g > 255 ? 255 : g) * 0x100 +

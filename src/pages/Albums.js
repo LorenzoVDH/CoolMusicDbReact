@@ -4,6 +4,13 @@ import AlbumService from '../services/AlbumService';
 import AlbumTable from '../components/AlbumTable';
 import ArrowBack from '@mui/icons-material/ArrowBack';
 import ArrowForward from '@mui/icons-material/ArrowForward';
+import Swal from 'sweetalert2';
+import AlbumInputBox from '../components/AlbumInputBox';
+import ValidationList from '../components/ValidationList';
+import albumValidation from '../components/albumValidation';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import ReactDOMServer from 'react-dom/server';
 
 
 const Albums = () => {
@@ -38,13 +45,69 @@ const Albums = () => {
         if (pageIndex < totalPages) {
             setPageIndex(pageIndex + 1);
         }
-    }
+    };
 
     const gotoPrevPage = () => {
         if (pageIndex > 0) {
             setPageIndex(pageIndex - 1);
         }
+    };
+
+    const editClickHandler = async (albumId) => {
+        const album = await albumService.getAlbumByIdAsync(albumId);
+
+        const result = await Swal.fire({
+            title: `Edit ${album.name}`,
+            didOpen: () => {
+                ReactDOM.render(<AlbumInputBox album={album} />, document.getElementById('dynamic-content-container'));
+            },
+            showCancelButton: true,
+            focusConfirm: false,
+            preConfirm: () => {
+                const id = albumId;
+                const name = document.getElementById('swal-input-name').value;
+                const releaseDate = document.getElementById('swal-input-date').value;
+                const artistIds = document.getElementById('swal-input-artists').value.split(',').map(artist => artist.trim());
+
+                return { id, name, releaseDate, artistIds };
+            },
+            confirmButtonText: "Update",
+            cancelButtonText: "Cancel",
+            width: '100vw',
+            html: '<div id="dynamic-content-container"></div>',
+        });
+
+        if (result.isConfirmed) {
+            let validationResults = albumValidation(result.value);
+            if (validationResults.length === 0) {
+                try {
+                    albumService.updateAlbumAsync(result.value);
+                    Swal.fire('Success', 'Album updated successfully!', 'success').then(() => window.location.reload());
+                } catch (error) {
+                    Swal.fire('Error', 'An error occurred while updating the album', 'error');
+                }
+            } else {
+                Swal.fire('Validation error', ReactDOMServer.renderToStaticMarkup(<ValidationList validationResults={validationResults} />));
+            }
+        }
     }
+
+    const deleteClickHandler = (event) => {
+        Swal.fire({
+            title: `Would you like to delete album with ID ${event}?`,
+            text: "This action cannot be reversed!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes",
+            cancelButtonText: "No"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                albumService.deleteAlbumAsync(event).then(() => {
+                    window.location.reload();
+                });
+            }
+        });
+    };
 
     return albums && (
         <div className="albums-page-container">
@@ -68,7 +131,7 @@ const Albums = () => {
                 </div>
             </div>
             <div className="album-table-wrapper">
-                <AlbumTable albums={albums} />
+                <AlbumTable albums={albums} onEditClick={c => editClickHandler(c)} onDeleteClick={c => deleteClickHandler(c)} />
             </div>
         </div>
     );

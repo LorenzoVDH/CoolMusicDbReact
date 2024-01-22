@@ -1,0 +1,28 @@
+.album-input-box {
+    display: flex;
+    flex-direction: column;
+    max-width: 1024px;
+    min-width: 600px;
+    margin: auto;
+}
+
+label {
+    text-align: left;
+    margin: 1.5em 0.3em -0.5em 1.5em;
+    font-size: 1.5em;
+}
+
+input {
+    margin: 0.5em;
+}
+
+.upper-row-flex-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.name-input-container {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
