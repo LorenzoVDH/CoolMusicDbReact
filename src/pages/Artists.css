@@ -1,4 +1,4 @@
-.album-table-wrapper {
+.artist-table-wrapper {
     overflow-y: scroll;
     height: 70vh;
     width: 80vw;
@@ -7,15 +7,9 @@
     max-height: 65vh;
 }
 
-.album-page-container {
+.artists-page-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
-}
-
-.albums-page-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }

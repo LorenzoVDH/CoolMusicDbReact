@@ -1,0 +1,26 @@
+.table-pagination {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    gap: 10px;
+}
+
+.table-pagination select {
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    font-size: 1em;
+}
+
+.table-pagination button {
+    border: none;
+    background-color: transparent;
+    color: inherit;
+    cursor: pointer;
+}
+
+.table-pagination button:disabled {
+    color: lightgray;
+    cursor: none;
+}

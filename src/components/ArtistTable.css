@@ -1,0 +1,38 @@
+.artist-table {
+    width: 100%;
+}
+
+.artist-table td {
+    text-align: left;
+    padding: 1em 0.75em;
+    font-size: 0.75em;
+    line-height: 1em;
+}
+
+.artist-table tr {
+    margin: 300px;
+}
+
+.artist-table td:nth-child(1) {
+    width: 19%;
+    font-weight: bold;
+}
+
+.artist-table td:nth-child(2) {
+    width: 19%;
+}
+
+.artist-table td:nth-child(3) {
+    width: 19%;
+}
+
+.artist-table td:nth-child(4) {
+    width: 12%;
+}
+
+.artist-table td:nth-child(5),
+td:nth-child(6),
+td:nth-child(7) {
+    width: 5%;
+    text-align: center;
+}
